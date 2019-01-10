@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>useraccount</title>
+</head>
+<body>
+	<div class="container">
+			<table border="0" width="500px" align="center" style="margin-top: 50px">
+				<tr>
+					<td style="text-align: center;background-color: lightblue" colspan="2"><h1>UserAccount</h1></td>
+				</tr>
+				<tr>
+					<td style="padding: 8px">Name:</td>
+					<td>{% if request.user.is_authenticated %}
+              			{{ request.user.username }}
+            			{% endif %}
+            		</td>
+				</tr>
+				<tr>
+					<td style="padding: 8px">Email ID:</td>
+					<td>
+						{% if request.user.is_authenticated %}
+              			{{ request.user.email }}
+            			{% endif %}
+					</td>
+				</tr>
+				<tr class="btn-group btn-group-justified">
+					<td colspan="2" align='right' style="padding: 10px">
+					<a href="/user/" class="btn btn-info" type="submit"> User Reports</a>
+					<a href="/submit/" class="btn btn-info" type="submit">Submit Report</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

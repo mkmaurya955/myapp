@@ -1,0 +1,125 @@
+<!-- <meta http-equiv="refresh" content="2">
+
+{% extends 'base.html' %}
+
+<script type="text/javascript">
+    {% block jquery %}
+    var endpoint='/api/chart/data/' //{% url "api-data" %}
+    var defaultData=[]
+    var labels=[]
+    $.ajax({
+        method:'GET',
+        url:endpoint,
+        success:function(data) {
+            labels=data.labels
+            defaultData=data.obj1
+            setChart()
+        },
+        error:function(error_data){
+            console.log(error)
+            console.log(error_data)
+        }
+    })
+         
+    function setChart(){
+    var ctx = document.getElementById("Temp");
+    var ctx2 = document.getElementById("Hmdt");
+    var Hmdt = new Chart(ctx2, {
+                type: 'bar',
+                 data: {
+                    labels: labels ,
+                    datasets: [{
+                        label: 'Max Humidity',
+                        data: defaultData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                           ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+              }
+            });
+            var Temp = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels ,
+                    datasets: [{
+                        label: 'Max Temperature',
+                        data: defaultData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                           ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+              }
+            });
+        }
+    {% endblock %}
+</script>
+{% block content %}
+<div>
+{% if obj1 %}
+{% for k in obj1 %}
+{{k.temperature }}
+{{ k.humidity }}
+{% endfor %}
+{% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-12" url-endpoint='{% url "api-data" %}'>
+        <h1>This is my charts</h1>
+        <p id="i2"></p>
+        <div class="col-sm-6">
+            <h1 style="text-align: center;">Temperature</h1>
+            <canvas id="Temp" width="100" height="100" name='obj1'></canvas> 
+        </div>
+        <div class="col-sm-6">
+            <h1 style="text-align: center;">Humidity</h1>
+            <canvas id="Hmdt" width="100" height="100" name='obj1'></canvas>
+        </div>
+    </div>
+</div>
+{% endblock content %} -->

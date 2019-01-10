@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<body>
+		<table border="1" width="500" align="center" style="margin-top: 25px" >
+		<tr>
+			<td colspan="2" style='background-color: lightblue'><h1 style="text-align: center;margin-top: 20px;">User Registration Form</h1></td>
+		</tr>
+		<div class="container">
+		<div class="form-group">
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li>
+					<tr>
+						<td>
+					<div class="alert alert-success">{{ message }}</div>
+				</td>
+			</tr>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</div>
+		<div class="col-md-10">
+			<form method="POST", action="" class="form-horizontal">
+				{% csrf_token %}
+				<div class="form-group">
+					<tr><td style="padding: 8px"><label class="col-md-2 control-label">Username</label></td>
+					<div class="col-md-5">
+						<td style="padding: 8px">{{ frm.username }}</td>
+						<tr><td style="padding: 8px">{{ frm.username.errors }}</td></tr>
+					</div></tr>
+				</div>
+
+				<div class="form-group">
+					<tr><td style="padding: 8px"><label class="col-md-2 control-label">Email ID</label></td>
+					<div class="col-md-5">
+						<td style="padding: 8px">{{ frm.email }}</td>
+						<tr><td style="padding: 8px">{{ frm.email.errors }}</td></tr>
+					</div></tr>
+				</div>
+
+				<div class="form-group">
+					<tr><td style="padding: 8px"><label class="col-md-2 control-label">First name</label></td>
+					<div class="col-md-5">
+						<td style="padding: 8px">{{ frm.first_name }}</td>
+						<tr><td style="padding: 8px">{{ frm.first_name.errors }}</td></tr>
+					</div></tr>
+				</div>
+
+				<div class="form-group">
+					<tr><td style="padding: 8px"><label class="col-md-2 control-label">Last name</label></td>
+					<div class="col-md-5">
+						<td style="padding: 8px">{{ frm.last_name }}</td>
+						<tr><td style="padding: 8px">{{ frm.last_name.errors }}</td></tr>
+					</div></tr>
+				</div>
+
+				<div class="form-group">
+					<tr><td style="padding: 8px"><label class="col-md-2 control-label">Password</label></td>
+					<div class="col-md-5">
+						<td style="padding: 8px">{{ frm.password }}</td>
+					</div></tr>
+				</div>
+
+				<div class="form-group">
+					<tr>
+						<td style="padding: 8px">
+					<label class="col-md-2 control-label">Confirm Password</label></td>
+					<div class="col-md-5">
+						<td style="padding: 8px">{{ frm.confirm_password }}</td>
+						<tr><td style="padding: 8px">{{ frm.confirm_password.errors }}</td></tr>
+					</div></tr>
+				</div>
+
+				<div class="col-md-offset-3">
+					<tr><td style="padding: 8px" align="right" colspan="2">
+				<button class="btn btn-success">Submit</button></td></tr>
+				</div>
+			</form>
+		</div></div>
+	</table>
+	</body>
+</html>
